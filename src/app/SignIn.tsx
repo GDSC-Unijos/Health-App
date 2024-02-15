@@ -101,6 +101,7 @@ export default function SignIn(){
           <button className="sm:w-full flex text-center mt-7 bg-white border border-solid justify-center">
             <img 
             src={require('../images/google.png')}
+            alt="google"
             />
             <h2 className="mt-3 mx-3">Sign In with Google</h2>
         </button>

@@ -105,7 +105,7 @@ export default function SignUp(){
 
           <input
             value={email}
-            onChange={(e) => e.target.value}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
             id="Email"
             name="email"
@@ -161,7 +161,7 @@ export default function SignUp(){
             By creating an account, you agree to our
             <a href="#" className="text-gray-700 underline"> terms and conditions </a>
             and
-            <a href="#" className="text-gray-700 underline">privacy policy</a>.
+            <a href="#" className="text-gray-700 underline">privacy policy</a>
           </p>
         </div>
 
@@ -182,6 +182,7 @@ export default function SignUp(){
       <button className="sm:w-full flex text-center mt-7 bg-white border border-solid justify-center">
         <img className="align-middle justify-center"
         src={require('../images/google.png')}
+        alt="google"
         />
         <h2 className="mt-3 mx-3">Sign up with Google</h2>
       </button>

@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Header(){
 
     return(
@@ -15,12 +17,12 @@ export default function Header(){
       </p>
 
       <div className="mt-4 sm:mt-8">
-        <a
-          href="#"
+        <Link
+          to="#"
           className="inline-block rounded-sm bg-[#0099D7] px-12 py-3 text-sm font-medium text-white transition hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-yellow-400"
         >
           Get Yours Today
-        </a>
+        </Link>
       </div>
     </div>
   </div>

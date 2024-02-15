@@ -22,18 +22,18 @@ export default function Navbar(){
         <nav aria-label="Global" className="hidden md:block">
           <ul className="flex items-center gap-6 text-sm">
             <li>
-              <a className="text-[#0099D7] transition hover:text-gray-500/75" href="#">Services </a>
+              <Link className="text-[#0099D7] transition hover:text-gray-500/75" to="#">Services </Link>
             </li>
             <li>
-              <a className="text-[#0099D7] transition hover:text-gray-500/75" href="#">Careers</a>
-            </li>
-
-            <li>
-              <a className="text-[#0099D7] transition hover:text-gray-500/75" href="#"> Our goals</a>
+              <Link className="text-[#0099D7] transition hover:text-gray-500/75" to="#">Careers</Link>
             </li>
 
             <li>
-              <a className="text-[#0099D7] transition hover:text-gray-500/75" href="#"> Be a Sponsor </a>
+              <Link className="text-[#0099D7] transition hover:text-gray-500/75" to="#"> Our goals</Link>
+            </li>
+
+            <li>
+              <Link className="text-[#0099D7] transition hover:text-gray-500/75" to="#"> Be a Sponsor </Link>
             </li>
 
 
