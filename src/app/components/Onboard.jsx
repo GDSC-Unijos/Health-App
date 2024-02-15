@@ -1,5 +1,5 @@
 import 'react-slideshow-image/dist/styles.css';
-import { Fade, Slide } from 'react-slideshow-image';
+import { Slide } from 'react-slideshow-image';
 import onboard from '../data/OnboardData';
 
 
