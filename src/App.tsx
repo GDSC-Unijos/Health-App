@@ -1,4 +1,4 @@
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 import './App.css';
 import SignUp from './app/SignUp';
 import SignIn from './app/SignIn';
@@ -12,70 +12,46 @@ import Profile from './app/Profile';
 import Settings from './app/Settings';
 import Notification  from './app/Notification'
 import Sidenav from './app/components/Sidenav';
+import ScheduleWrap from './app/components/ScheduleWrapper';
+import NewSched from './app/NewSchedule';
+import SingleSched from './app/SingleSchedule';
+import RecurWrap from './app/components/RecurringWrap';
+import RecurSched from './app/RecurSchedule';
+import RecurSched2 from './app/RecurSchedule2';
+import RecurSchedule3 from './app/RecurSchedule3';
  
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Home />
-    },
-    {
-      path: "/signup",
-      element: <SignUp />
-    },
-    {
-      path: "/signin",
-      element: <SignIn />
-    },
-
-    {
-      path: "/dashboard",
-      element: <Dashboard />
-    },
-
-    {
-      path: "/schedule",
-      element: <Schedule />
-    },
-
-    {
-      path: "/signin",
-      element: <SignIn />
-    },
-
-    {
-      path: "/chat",
-      element: <Chat />
-    },
-
-    {
-      path: "/activity",
-      element: <Activty />
-    },
-
-    {
-      path: "/emergency",
-      element: <Emergency />
-    },
-
-    {
-      path: "/profile",
-      element: <Profile />
-    },
-
-    {
-      path: "/settings",
-      element: <Settings />
-    },
-    {
-      path: "/notification",
-      element: <Notification />
-    },
-  ]);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route>
+        <Route index element={<Home/>} />
+        <Route path='signup' element={<SignUp/>} />
+        <Route path='signin' element={<SignIn/>} />
+        <Route path='profile' element={<Profile/>} />
+        <Route element={<Sidenav/>}>
+          <Route path='dashboard' element={<Dashboard/>} />
+          <Route path='schedule' element={<ScheduleWrap/>} >
+            <Route index element={<Schedule/>} />
+            <Route path='new-schedule' element={<NewSched/>} />
+            <Route path='single-schedule' element={<SingleSched/>} />
+            <Route element={<RecurWrap/>}>
+              <Route path='recurring1' element={<RecurSched/>}/>
+              <Route path='recurring2' element={<RecurSched2/>} />
+              <Route path='recurring3' element={<RecurSchedule3/>} />
+            </Route>
+          </Route>
+          <Route path='chat' element={<Chat/>} />
+          <Route path='activity' element={<Activty/>} />
+          <Route path='emergency' element={<Emergency/>} />
+          <Route path='settings' element={<Settings/>} />
+          <Route path='notification' element={<Notification/>} />
+        </Route>
+      </Route>
+    )
+  )
 
   return (
-    // <Sidenav /> {/* Include Navbar component outside RouterProvider */}
     <RouterProvider router={router} />
     
   );

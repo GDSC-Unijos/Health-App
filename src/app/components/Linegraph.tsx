@@ -25,13 +25,13 @@ function LineGraph() {
       borderColor: '#263A5C',
       pointBorderColor: 'transparent',
       pointBorderWidth: 4,
-      tension:0.15
+      tension:0.4
     }]
   };
 
   const options = {}
   return (
-    <div className='sm:w-[80%] md:w-[50%]'
+    <div className='w-full md:w-[80%]'
       style={{
         margin: 'auto',
         borderStyle: 'solid',
@@ -39,7 +39,7 @@ function LineGraph() {
         boxShadow:'3px 4px 2px rgba(161,164,170 ,0.5)',
       }}
     >
-      <h1 className='text-center text-[#263A5C] mt-[50px]' >Medication intake Graph</h1>
+      <h1 className='text-center text-[#263A5C] mt-[40px]' >Medication intake Graph</h1>
       <Line data={data} options={options} />
     </div>
   );

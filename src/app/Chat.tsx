@@ -1,39 +1,37 @@
-import React from 'react'
-import Sidenav from "./components/Sidenav";
-import notify from "../images/ri_notification-4-line.png";
-import profile from '../images/ProfilePic.png'
+import profile from '../images/profilepic2.svg'
 import info from '../images/information.svg'
-import { Link } from "react-router-dom";
 import send from '../images/sendMessage.svg'
 import ai from '../images/carbon_watsonx-ai.svg'
+import notifyIcon from '../images/ri_notification-4-line.svg'
+import { useNavigate } from 'react-router';
 
 export default function Notification() {
+  const history = useNavigate();
+
   return (
     <div
-    style={{
-      fontFamily: 'Roboto, sans-serif',
-      fontWeight: '400',
-  }}
+      style={{
+        fontFamily: 'Roboto, sans-serif',
+        fontWeight: '400',
+      }}
     >
-      {/* <Sidenav /> */}
-      <div className='  items-center w-full'>
-      <div className=' flex text-center'>
-          <h1
-              style={{
-                fontFamily: 'Roboto, sans-serif',
-                fontWeight: '500',
-            }}
-            
-            className=' w-full md:mt-[50px] mt-[30px]  md:ml-[40px] text-[#263A5C] text-[20px]'>Chat</h1>
-          <div className='flex p-[5px] md:mr-[20px] md:mt-[20px]  ml-auto'>
-          <img src={notify} alt="" className='m-[3px] w-[30px] h-[30px] ' />
-          <Link to='/profile'>
-          <img src={profile} alt="" className='m-[3px]'/>          
-          </Link>
+      <header className='hidden md:block'>
+        <nav className="topHeader flex justify-between items-center my-10">
+          <h1 className='text-2xl text-[#263A5C] font-bold'>Chat</h1>
+          <div className="flex items-center gap-4">
+            <img
+              onClick={() => history("../notification")}
+              src={notifyIcon}
+              alt="Bell Icon"
+            />
+            <span
+              onClick={() => history("../profile")} 
+              className="rounded-full text-white px-3 py-1 text-xl bg-[#6C8571] cursor-pointer"
+            >T</span>
           </div>
-        </div>
-      </div>
-      <div className=' w-[95%] m-auto p-[10px] max-w-[55rem] rounded-lg border-[1px] border-[solid] border-[#E1E2FF] '>
+        </nav>
+      </header>
+      <div className=' w-full sm:w-[90%] m-auto  my-12 p-[10px] max-w-[60rem] rounded-lg border-[1px] border-[solid] border-[#E1E2FF] '>
         <div className='flex  border-b-[1px] border-b-[solid] border-b-[#E1E2FF] '>
           <div className='w-fit mt-[5px]'>
           <img src={ai} alt=""  />

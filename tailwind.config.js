@@ -5,6 +5,11 @@ module.exports = {
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'pops': ['Poppins', 'sans-serif'],
+      'robo': ['Roboto', 'sans-serif'],
+      'inter': ['Inter', 'sans-serif'],
+    }
   },
   plugins: [],
 }

@@ -4,21 +4,86 @@ import Onboard from "./components/Onboard"
 import google from '../images/google.png'
 
 export default function SignUp(){                     
-  const [Name, setFirstName] = useState('')
+  const [name, setFirstName] = useState('')
   const [age, setAge] = useState('select age')
   const [gender, setGender] = useState('select gender')
   const [password, setPassword] = useState('')
   const [phone, setPhone] = useState('')
   const [email, setEmail] = useState('')
+
+  const [data, setData] = useState('');
+
+  // const [showPassword, setShowPassword] = useState(false);
+  // const togglePasswordVisibility = () => {
+  //   setShowPassword(!showPassword);
+  // }
+  const [isLoading, setIsLoading] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
+  
+    // Password validation
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setData('Password must contain at least 8 characters, including uppercase, lowercase, numbers, and special characters');
+      setIsLoading(false);
+      return;
+    }
+
+    try {
+      const response = await fetch('https://senexcare.onrender.com/user/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+           name,
+          email,
+          number:phone,
+           gender,
+           age,
+          password,
+      }),
+      });
+      const data = await response.json()
+      console.log(data)
+    setData(data);
+    if (response.ok) {
+      setIsLoading(false);
+    } else if(response.status === 401) {
+      setData(data);
+      setIsLoading(false);
+    }else if (response.status === 404){
+      setData(data);
+      setIsLoading(false);
+    }else{
+      setData('Could not create account');
+      setIsLoading(false);
+    }
+  }
+    catch (error) {
+      console.log("Topins' Error:", error);
+      setIsLoading(false);
+    }
+  }
+
+
+
+
+
+
+
+
     return(
   
 
 <section className="bg-white ">
 <div className="lg:grid lg:min-h-screen lg:grid-cols-12 ">
   <main
-    className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-6 lg:px-16 lg:py-12 xl:col-span-6  "
+    className="flex items-center justify-center px-8 py-10 sm:px-15 lg:col-span-6 lg:px-16 lg:py-12 xl:col-span-6  "
   >
-    <div className=" w-fit lg:max-w-3xl border-[#B1B5B9] border-[1px] rounded-[6px] p-[15px]">
+    <div className=" w-fit lg:max-w-3xl border-[#B1B5B9] border-[1px] rounded-[6px] p-[40px]">
       
       <div className="w-full ">
       {/* <Link className="block text-blue-600" to="#">
@@ -42,10 +107,10 @@ export default function SignUp(){
                   className=" text-2xl font-bold text-[#263A5C] sm:text-3xl md:text-4xl text-center">
         Sign Up
       </h1>
-      <form action="#" className="mt-8 ">
+      <form action="#" onClick={handleSubmit} className="mt-8 ">
         <div className="col-span-6 sm:col-span-3 flex justify-center m-[20px]">         
           <input
-          value={Name}
+          value={name}
           onChange={(e) => setFirstName(e.target.value)}
             type="text"
                   id="Name"
@@ -127,33 +192,35 @@ export default function SignUp(){
           </p>
         </div> 
       </form>
-      <button className="w-[20rem] flex text-center mt-[10px] bg-white border border-solid justify-center m-auto">
+      <button className="w-[20rem] flex text-center mt-[30px] bg-white border border-solid justify-center m-auto">
             <img className="w-[2rem] m-2"
             src={google}
             alt="google"
             />
             <h2 className="m-3 font-semibold">Sign In with Google</h2>
         </button>
-        <div className=" w-full flex justify-center mt-[20px]">
+                <div className=" w-full flex justify-center mt-[30px]">
+                  <Link to='/dashboard'>
               <button
               type="submit"
-              className=" rounded-[20px] bg-[#263A5C] px-7 py-3 text-sm font-medium text-white w-3/5 m-auto"
+              className=" rounded-[20px] bg-[#263A5C] px-14 py-3 text-sm font-medium text-white m-auto"
             >
               Sign in
             </button>
+                  </Link>
               </div>
      
        
       </div>
-          <div className="flex  justify-center ">
+          <div className="flex  justify-center mt-[20px] ">
             <p className="text-lg text-[#221F1F]">
               Already have an account?
-              <Link className="text-[#407CE2]" to="/signin">   Sign in</Link>
+              <Link className="text-[#407CE2]" to="/signin" >   Sign Up</Link>
                 </p>
                 </div>
     </div>
   </main>
-  <aside className="relative block lg:col-span-6 lg:h-full sm:hidden lg:block h-[100vh] bg-[#263A5C]">
+  <aside className="relative  lg:col-span-6 lg:h-full hidden lg:block h-[100vh] bg-[#263A5C]">
     {/* <div className=""> */}
       <Onboard />
     {/* </div> */}

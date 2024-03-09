@@ -22,7 +22,7 @@ ChartJs.register(
 
 function Barchart() {
   const data = {
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September', 'October', 'November', 'December'],
     datasets: [
       {
         label: 'Medication',
@@ -35,7 +35,7 @@ function Barchart() {
         backgroundColor: '#263A5C', // Blu
       },
       {
-        label: 'Schedule',
+        label: 'Treatment',
         data: [30, 40, 50, 60, 70, 80, 90],
         backgroundColor: '#FB640D', // Yellow
       },
@@ -51,7 +51,7 @@ function Barchart() {
   };
 
   return (
-    <div className='sm:w-[80%] md:w-[50%]'
+    <div className='w-[100%] md:w-[80%]'
       style={{
         margin: 'auto',
         borderStyle: 'solid',
@@ -59,7 +59,7 @@ function Barchart() {
         boxShadow: '3px 4px 2px rgba(161,164,170 ,0.5)',
       }}
     >
-      <h1 className='text-center text-[#263A5C] mt-[50px]'>Total Activity</h1>
+      <h1 className='text-center text-[#263A5C] my-[32px]'>Total Activity</h1>
       <Bar data={data} options={options} />
     </div>
   );

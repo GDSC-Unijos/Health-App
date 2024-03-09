@@ -45,7 +45,7 @@ function Piechart() {
   
   
   return (
-    <div className='sm:w-[70%] md:w-[40%]'
+    <div className='w-full md:w-[60%]'
       style={{
         margin: 'auto',
         borderStyle: 'solid',
@@ -53,7 +53,7 @@ function Piechart() {
         boxShadow: '3px 4px 2px rgba(161, 164, 170, 0.5)',
       }}
     >
-      <h1 className='text-center text-[#263A5C] mt-[50px] '>Schedules Graph</h1>
+      <h1 className='text-center text-[#263A5C] mt-[80px] '>Schedules Graph</h1>
       <Pie data={data} options={options} />
     </div>
   );
